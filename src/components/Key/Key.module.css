@@ -1,8 +1,51 @@
+.key {
+  display: flex;
+  align-items: flex-end;
+  padding: 0 5px 10px;
+
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  box-shadow: rgba(32, 32, 32, 0.2) 0px 5px 1px 0px;
+
+  cursor: pointer;
+}
+
 .whiteKey {
+  composes: key;
+
+  position: relative;
+
+  width: calc(100% / 21);
+  height: 250px;
+
   background-color: #ffffff;
+  border: 1px solid #000000;
 }
 
 .blackKey {
+  composes: key;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateX(50%);
+  z-index: 1;
+
+  width: 70%;
+  height: 150px;
+
+  font-size: 10px;
+
   background-color: #000000;
   color: #ffffff;
+}
+
+.blackKeyGroup {
+  width: 100%;
+}
+
+.keyCaption {
+  margin: 0;
+  width: 100%;
+  text-align: center;
 }

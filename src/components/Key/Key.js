@@ -4,11 +4,13 @@ import styles from './Key.module.css';
 const Key = ({ boardKey }) => {
   return (
     <li className={styles.whiteKey}>
-      <span>{boardKey.noteLA}</span>
+      <p className={styles.keyCaption}>{boardKey.noteLA}</p>
       {boardKey.halftone && (
         <div className={styles.blackKey}>
-          <span>{boardKey.halftone.noteLASharp}</span>
-          <span>{boardKey.halftone.noteLAFlat}</span>
+          <div className={styles.blackKeyGroup}>
+            <p className={styles.keyCaption}>{boardKey.halftone.noteLASharp}</p>
+            <p className={styles.keyCaption}>{boardKey.halftone.noteLAFlat}</p>
+          </div>
         </div>
       )}
     </li>
