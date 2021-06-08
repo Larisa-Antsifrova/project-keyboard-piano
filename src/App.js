@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import Container from './components/Container/Container';
+import Title from './components/Title/Title';
 import { soundifyKeyboard } from './helpers/soundify-keyboard';
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
 
   return (
     <Container>
-      <h1>Here comes my Piano App!</h1>
+      <Title title="Here comes my Piano App!" />
     </Container>
   );
 }
