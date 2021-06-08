@@ -1,12 +1,15 @@
-import PropTypes from 'prop-types';
+import Key from '../Key/Key';
+import { keys } from '../../keys/keys';
 import styles from './Keyboard.module.css';
 
-const Keyboard = ({ children }) => {
-  return <ul className={styles.keyboard}>{children}</ul>;
-};
-
-Keyboard.propTypes = {
-  children: PropTypes.node,
+const Keyboard = () => {
+  return (
+    <ul className={styles.keyboard}>
+      {keys.map(key => (
+        <Key key={key.code} boardKey={key} />
+      ))}
+    </ul>
+  );
 };
 
 export default Keyboard;
