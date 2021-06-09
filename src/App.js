@@ -7,29 +7,34 @@ import { soundifyKeyboard } from './helpers/soundify-keyboard';
 function App() {
   const [keyCode, setKeyCode] = useState([]);
 
-  const onKeyDown = e => {
-    setKeyCode(prevState => [...prevState, e.code]);
-    soundifyKeyboard(e);
-  };
-
   const onKeyUp = e => {
     setKeyCode(prevState => prevState.filter(key => key !== e.code));
   };
 
   useEffect(() => {
-    document.addEventListener('keypress', onKeyDown);
+    const onKeyDown = e => {
+      setKeyCode(prevState => {
+        if (prevState.includes(e.code)) {
+          return prevState;
+        }
+        return [...prevState, e.code];
+      });
+      soundifyKeyboard(e, keyCode);
+    };
+
+    document.addEventListener('keydown', onKeyDown);
     document.addEventListener('keyup', onKeyUp);
 
     return () => {
-      document.removeEventListener('keypress', onKeyDown);
+      document.removeEventListener('keydown', onKeyDown);
       document.removeEventListener('keyup', onKeyUp);
     };
-  }, []);
+  }, [keyCode]);
 
   return (
     <Container>
       <Title title="Here comes my Piano App!" />
-      <Keyboard />
+      <Keyboard currentKeys={keyCode} />
     </Container>
   );
 }

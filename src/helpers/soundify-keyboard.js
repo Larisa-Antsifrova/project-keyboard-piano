@@ -1,6 +1,10 @@
 import { keys } from '../keys/keys';
 
-function soundifyKeyboard(e) {
+function soundifyKeyboard(e, keyCode) {
+  if (keyCode.includes(e.code)) {
+    return;
+  }
+
   keys.forEach(key => {
     if (key.code === e.code) {
       new Audio(key.url).play();
