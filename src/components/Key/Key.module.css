@@ -19,7 +19,15 @@
   height: 250px;
 
   background-color: #ffffff;
-  border: 1px solid #000000;
+  border: 1px solid #bdbdbd;
+}
+
+.whiteKeyPressed {
+  composes: whiteKey;
+
+  height: 255px;
+  background-color: #eeeeee;
+  box-shadow: none;
 }
 
 .blackKey {
@@ -38,6 +46,13 @@
 
   background-color: #000000;
   color: #ffffff;
+}
+
+.blackKeyPressed {
+  composes: blackKey;
+
+  top: 5px;
+  box-shadow: none;
 }
 
 .blackKeyGroup {

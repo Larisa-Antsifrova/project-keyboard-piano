@@ -1,12 +1,24 @@
 import PropTypes from 'prop-types';
 import styles from './Key.module.css';
 
-const Key = ({ boardKey }) => {
+const Key = ({ boardKey, currentKeys }) => {
   return (
-    <li className={styles.whiteKey}>
+    <li
+      className={
+        currentKeys.includes(boardKey.code)
+          ? styles.whiteKeyPressed
+          : styles.whiteKey
+      }
+    >
       <p className={styles.keyCaption}>{boardKey.noteLA}</p>
       {boardKey.halftone && (
-        <div className={styles.blackKey}>
+        <div
+          className={
+            currentKeys.includes(boardKey.halftone.code)
+              ? styles.blackKeyPressed
+              : styles.blackKey
+          }
+        >
           <div className={styles.blackKeyGroup}>
             <p className={styles.keyCaption}>{boardKey.halftone.noteLASharp}</p>
             <p className={styles.keyCaption}>{boardKey.halftone.noteLAFlat}</p>
